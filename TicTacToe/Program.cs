@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using TicTacToe.services;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Play play = new Play();
+        play.start();
+    }
+}

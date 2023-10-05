@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace TicTacToe.entity
 {
-    internal class Bot
+    public static class Bot
     {
+        public static void turn(List<String> board) 
+        {
+            System.Random random = new System.Random();
+            int r = random.Next(board.Count);
+
+            if (board[r] == "?")
+            {
+                board[r] = "o";
+            } else
+            {
+                turn(board);
+            }
+        }
     }
 }

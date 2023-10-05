@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.entity;
+using TicTacToe.utilities;
 
 namespace TicTacToe.services
 {
     public class Play
     {
-        List<String> boardData = ["?", "?", "?", "?", "?", "?", "?", "?", "?"];
+        List<String> boardData = new List<string> {"?", "?", "?", "?", "?", "?", "?", "?", "?" };
 
         public void board()
         {
@@ -19,15 +21,67 @@ namespace TicTacToe.services
             Console.WriteLine(" ");
 
             Console.WriteLine("===================");
-            Console.WriteLine("=  ${boardData[0]}  =  ${boardData[1]}  =  ${boardData[2]}  =");
+            Console.WriteLine("=  " + boardData[0] + "  =  " + boardData[1] + "  =  " + boardData[2] + " =");
             Console.WriteLine("===================");
-            Console.WriteLine("=  ${boardData[3]}  =  ${boardData[4]}  =  ${boardData[5]}  =");
+            Console.WriteLine("=  " + boardData[3] + "  =  " + boardData[4] + "  =  " + boardData[5] + " =");
             Console.WriteLine("===================");
-            Console.WriteLine("=  ${boardData[6]}  =  ${boardData[7]}  =  ${boardData[8]}  =");
+            Console.WriteLine("=  " + boardData[6] + "  =  " + boardData[7] + "  =  " + boardData[8] + " =");
             Console.WriteLine("===================");
 
-            Console.WriteLine(" ");
         }
+
+        public void start()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+
+                if (i == 4)
+                {
+                    if (winAndLoseCondition())
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        board();
+                        Console.WriteLine("Tie!");
+                    }
+                }
+                else
+                {
+                    board();
+                    Player.turn(boardData);
+                    Bot.turn(boardData);
+                    Console.Clear();
+                }
+
+                if (winAndLoseCondition())
+                {
+                    List<String> boardData = new List<string> { "?", "?", "?", "?", "?", "?", "?", "?", "?" };
+                }
+            }
+
+            Console.WriteLine("Create by: Daffa Azka");
+
+            Console.WriteLine(" ");
+
+            while (true)
+            {
+                String s = InputUtil.inputStr("Try Again? (y/n)");
+
+                if (s == "y")
+                {
+                    boardData = new List<string> { "?", "?", "?", "?", "?", "?", "?", "?", "?" };
+                    start();
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+
 
         public bool winAndLoseCondition()
         {
