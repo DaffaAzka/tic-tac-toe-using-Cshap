@@ -34,6 +34,11 @@ namespace TicTacToe.services
         {
             for (int i = 0; i < 5; i++)
             {
+                if (winAndLoseCondition())
+                {
+                    List<String> boardData = new List<string> { "?", "?", "?", "?", "?", "?", "?", "?", "?" };
+                    break;
+                }
 
                 if (i == 4)
                 {
@@ -55,10 +60,7 @@ namespace TicTacToe.services
                     Console.Clear();
                 }
 
-                if (winAndLoseCondition())
-                {
-                    List<String> boardData = new List<string> { "?", "?", "?", "?", "?", "?", "?", "?", "?" };
-                }
+                
             }
 
             Console.WriteLine("Create by: Daffa Azka");
@@ -72,6 +74,7 @@ namespace TicTacToe.services
                 if (s == "y")
                 {
                     boardData = new List<string> { "?", "?", "?", "?", "?", "?", "?", "?", "?" };
+                    Console.Clear();
                     start();
                 }
                 else
